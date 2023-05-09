@@ -434,11 +434,6 @@ document.write(`
 </pre></div>
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  Preparing metadata (pyproject.toml) ... ?25l?25hdone
-Requirement already satisfied: attrs&gt;=17.3.0 in /usr/local/lib/python3.10/dist-packages (from aiohttp==3.7.0) (23.1.0)
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Collecting yarl&lt;2.0,&gt;=1.0
-  Using cached yarl-1.9.2-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (268 kB)
 Collecting chardet&lt;4.0,&gt;=2.0
   Using cached chardet-3.0.4-py2.py3-none-any.whl (133 kB)
 </pre></div>
@@ -447,8 +442,13 @@ Collecting chardet&lt;4.0,&gt;=2.0
   Using cached async_timeout-3.0.1-py3-none-any.whl (8.2 kB)
 </pre></div>
 </div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Collecting yarl&lt;2.0,&gt;=1.0
+  Using cached yarl-1.9.2-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (268 kB)
+</pre></div>
+</div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Collecting multidict&lt;7.0,&gt;=4.5
   Using cached multidict-6.0.4-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (114 kB)
+Requirement already satisfied: attrs&gt;=17.3.0 in /usr/local/lib/python3.10/dist-packages (from aiohttp==3.7.0) (23.1.0)
 Requirement already satisfied: idna&gt;=2.0 in /usr/local/lib/python3.10/dist-packages (from yarl&lt;2.0,&gt;=1.0-&gt;aiohttp==3.7.0) (3.4)
 Building wheels for collected packages: aiohttp
 </pre></div>
@@ -480,6 +480,8 @@ Traceback (most recent call last):
     call_subprocess(
   File &quot;/usr/local/lib/python3.10/dist-packages/pip/_internal/utils/subprocess.py&quot;, line 166, in call_subprocess
     line: str = proc.stdout.readline()
+  File &quot;/usr/lib/python3.10/codecs.py&quot;, line 319, in decode
+    def decode(self, input, final=False):
 KeyboardInterrupt
 
 During handling of the above exception, another exception occurred:

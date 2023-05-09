@@ -394,11 +394,15 @@ document.write(`
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#slank-words"><strong>4. Slank Words</strong></a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#steaming"><strong>5. Steaming</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#stemming"><strong>5. Stemming</strong></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#tokenizing-dan-stop-word"><strong>6. Tokenizing dan Stop Word</strong></a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ekstraksi-fitur-perhitungan-tf-idf"><strong>EKSTRAKSI FITUR - PERHITUNGAN TF IDF</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ekstraksi-fitur-perhitungan-tf-idf"><strong>EKSTRAKSI FITUR - PERHITUNGAN TF IDF</strong></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#menampilkan-tf"><strong>1. Menampilkan TF</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#menampilkan-tf-idf"><strong>2. Menampilkan TF-IDF</strong></a></li>
+</ul>
+</li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#reduksi-dimensi-dengan-metode-pca"><strong>REDUKSI DIMENSI DENGAN METODE PCA</strong></a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#modelling-dengan-k-means-clustering"><strong>MODELLING DENGAN K-MEANS CLUSTERING</strong></a></li>
 </ul>
@@ -429,16 +433,16 @@ document.write(`
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Looking in indexes: https://pypi.org/simple, https://us-python.pkg.dev/colab-wheels/public/simple/
-Requirement already satisfied: requests in /usr/local/lib/python3.9/dist-packages (2.27.1)
-Requirement already satisfied: urllib3&lt;1.27,&gt;=1.21.1 in /usr/local/lib/python3.9/dist-packages (from requests) (1.26.15)
-Requirement already satisfied: certifi&gt;=2017.4.17 in /usr/local/lib/python3.9/dist-packages (from requests) (2022.12.7)
-Requirement already satisfied: idna&lt;4,&gt;=2.5 in /usr/local/lib/python3.9/dist-packages (from requests) (3.4)
-Requirement already satisfied: charset-normalizer~=2.0.0 in /usr/local/lib/python3.9/dist-packages (from requests) (2.0.12)
+Requirement already satisfied: requests in /usr/local/lib/python3.10/dist-packages (2.27.1)
+Requirement already satisfied: urllib3&lt;1.27,&gt;=1.21.1 in /usr/local/lib/python3.10/dist-packages (from requests) (1.26.15)
+Requirement already satisfied: idna&lt;4,&gt;=2.5 in /usr/local/lib/python3.10/dist-packages (from requests) (3.4)
+Requirement already satisfied: certifi&gt;=2017.4.17 in /usr/local/lib/python3.10/dist-packages (from requests) (2022.12.7)
+Requirement already satisfied: charset-normalizer~=2.0.0 in /usr/local/lib/python3.10/dist-packages (from requests) (2.0.12)
 </pre></div>
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Looking in indexes: https://pypi.org/simple, https://us-python.pkg.dev/colab-wheels/public/simple/
-Requirement already satisfied: BeautifulSoup4 in /usr/local/lib/python3.9/dist-packages (4.11.2)
-Requirement already satisfied: soupsieve&gt;1.2 in /usr/local/lib/python3.9/dist-packages (from BeautifulSoup4) (2.4)
+Requirement already satisfied: BeautifulSoup4 in /usr/local/lib/python3.10/dist-packages (4.11.2)
+Requirement already satisfied: soupsieve&gt;1.2 in /usr/local/lib/python3.10/dist-packages (from BeautifulSoup4) (2.4.1)
 </pre></div>
 </div>
 </div>
@@ -512,105 +516,105 @@ Requirement already satisfied: soupsieve&gt;1.2 in /usr/local/lib/python3.9/dist
 <span class="g g-Whitespace">     </span><span class="mi">30</span>       <span class="n">soup2</span> <span class="o">=</span> <span class="n">BeautifulSoup</span><span class="p">(</span><span class="n">req2</span><span class="o">.</span><span class="n">text</span><span class="p">,</span> <span class="s1">&#39;html.parser&#39;</span><span class="p">)</span>
 <span class="g g-Whitespace">     </span><span class="mi">31</span>       <span class="n">items2</span> <span class="o">=</span> <span class="n">soup2</span><span class="o">.</span><span class="n">findAll</span><span class="p">(</span><span class="s1">&#39;li&#39;</span><span class="p">,{</span><span class="s1">&#39;data-id&#39;</span><span class="p">:</span><span class="s1">&#39;id-1&#39;</span><span class="p">})</span>
 
-<span class="nn">/usr/local/lib/python3.9/dist-packages/requests/api.py</span> in <span class="ni">get</span><span class="nt">(url, params, **kwargs)</span>
+<span class="nn">/usr/local/lib/python3.10/dist-packages/requests/api.py</span> in <span class="ni">get</span><span class="nt">(url, params, **kwargs)</span>
 <span class="g g-Whitespace">     </span><span class="mi">73</span>     <span class="s2">&quot;&quot;&quot;</span>
 <span class="g g-Whitespace">     </span><span class="mi">74</span><span class="s2"> </span>
 <span class="ne">---&gt; </span><span class="mi">75</span><span class="s2">     return request(&#39;get&#39;, url, params=params, **kwargs)</span>
 <span class="g g-Whitespace">     </span><span class="mi">76</span><span class="s2"> </span>
 <span class="g g-Whitespace">     </span><span class="mi">77</span><span class="s2"> </span>
 
-<span class="nn">/usr/local/lib/python3.9/dist-packages/requests/api.py</span> in <span class="ni">request</span><span class="nt">(method, url, **kwargs)</span>
+<span class="nn">/usr/local/lib/python3.10/dist-packages/requests/api.py</span> in <span class="ni">request</span><span class="nt">(method, url, **kwargs)</span>
 <span class="g g-Whitespace">     </span><span class="mi">59</span><span class="s2">     # cases, and look like a memory leak in others.</span>
 <span class="g g-Whitespace">     </span><span class="mi">60</span><span class="s2">     with sessions.Session() as session:</span>
 <span class="ne">---&gt; </span><span class="mi">61</span><span class="s2">         return session.request(method=method, url=url, **kwargs)</span>
 <span class="g g-Whitespace">     </span><span class="mi">62</span><span class="s2"> </span>
 <span class="g g-Whitespace">     </span><span class="mi">63</span><span class="s2"> </span>
 
-<span class="nn">/usr/local/lib/python3.9/dist-packages/requests/sessions.py</span> in <span class="ni">request</span><span class="nt">(self, method, url, params, data, headers, cookies, files, auth, timeout, allow_redirects, proxies, hooks, stream, verify, cert, json)</span>
+<span class="nn">/usr/local/lib/python3.10/dist-packages/requests/sessions.py</span> in <span class="ni">request</span><span class="nt">(self, method, url, params, data, headers, cookies, files, auth, timeout, allow_redirects, proxies, hooks, stream, verify, cert, json)</span>
 <span class="g g-Whitespace">    </span><span class="mi">527</span><span class="s2">         }</span>
 <span class="g g-Whitespace">    </span><span class="mi">528</span><span class="s2">         send_kwargs.update(settings)</span>
 <span class="ne">--&gt; </span><span class="mi">529</span><span class="s2">         resp = self.send(prep, **send_kwargs)</span>
 <span class="g g-Whitespace">    </span><span class="mi">530</span><span class="s2"> </span>
 <span class="g g-Whitespace">    </span><span class="mi">531</span><span class="s2">         return resp</span>
 
-<span class="nn">/usr/local/lib/python3.9/dist-packages/requests/sessions.py</span> in <span class="ni">send</span><span class="nt">(self, request, **kwargs)</span>
+<span class="nn">/usr/local/lib/python3.10/dist-packages/requests/sessions.py</span> in <span class="ni">send</span><span class="nt">(self, request, **kwargs)</span>
 <span class="g g-Whitespace">    </span><span class="mi">643</span><span class="s2"> </span>
 <span class="g g-Whitespace">    </span><span class="mi">644</span><span class="s2">         # Send the request</span>
 <span class="ne">--&gt; </span><span class="mi">645</span><span class="s2">         r = adapter.send(request, **kwargs)</span>
 <span class="g g-Whitespace">    </span><span class="mi">646</span><span class="s2"> </span>
 <span class="g g-Whitespace">    </span><span class="mi">647</span><span class="s2">         # Total elapsed time of the request (approximately)</span>
 
-<span class="nn">/usr/local/lib/python3.9/dist-packages/requests/adapters.py</span> in <span class="ni">send</span><span class="nt">(self, request, stream, timeout, verify, cert, proxies)</span>
+<span class="nn">/usr/local/lib/python3.10/dist-packages/requests/adapters.py</span> in <span class="ni">send</span><span class="nt">(self, request, stream, timeout, verify, cert, proxies)</span>
 <span class="g g-Whitespace">    </span><span class="mi">438</span><span class="s2">         try:</span>
 <span class="g g-Whitespace">    </span><span class="mi">439</span><span class="s2">             if not chunked:</span>
 <span class="ne">--&gt; </span><span class="mi">440</span><span class="s2">                 resp = conn.urlopen(</span>
 <span class="g g-Whitespace">    </span><span class="mi">441</span><span class="s2">                     method=request.method,</span>
 <span class="g g-Whitespace">    </span><span class="mi">442</span><span class="s2">                     url=url,</span>
 
-<span class="nn">/usr/local/lib/python3.9/dist-packages/urllib3/connectionpool.py</span> in <span class="ni">urlopen</span><span class="nt">(self, method, url, body, headers, retries, redirect, assert_same_host, timeout, pool_timeout, release_conn, chunked, body_pos, **response_kw)</span>
+<span class="nn">/usr/local/lib/python3.10/dist-packages/urllib3/connectionpool.py</span> in <span class="ni">urlopen</span><span class="nt">(self, method, url, body, headers, retries, redirect, assert_same_host, timeout, pool_timeout, release_conn, chunked, body_pos, **response_kw)</span>
 <span class="g g-Whitespace">    </span><span class="mi">701</span><span class="s2"> </span>
 <span class="g g-Whitespace">    </span><span class="mi">702</span><span class="s2">             # Make the request on the httplib connection object.</span>
 <span class="ne">--&gt; </span><span class="mi">703</span><span class="s2">             httplib_response = self._make_request(</span>
 <span class="g g-Whitespace">    </span><span class="mi">704</span><span class="s2">                 conn,</span>
 <span class="g g-Whitespace">    </span><span class="mi">705</span><span class="s2">                 method,</span>
 
-<span class="nn">/usr/local/lib/python3.9/dist-packages/urllib3/connectionpool.py</span> in <span class="ni">_make_request</span><span class="nt">(self, conn, method, url, timeout, chunked, **httplib_request_kw)</span>
+<span class="nn">/usr/local/lib/python3.10/dist-packages/urllib3/connectionpool.py</span> in <span class="ni">_make_request</span><span class="nt">(self, conn, method, url, timeout, chunked, **httplib_request_kw)</span>
 <span class="g g-Whitespace">    </span><span class="mi">447</span><span class="s2">                     # Python 3 (including for exceptions like SystemExit).</span>
 <span class="g g-Whitespace">    </span><span class="mi">448</span><span class="s2">                     # Otherwise it looks like a bug in the code.</span>
 <span class="ne">--&gt; </span><span class="mi">449</span><span class="s2">                     six.raise_from(e, None)</span>
 <span class="g g-Whitespace">    </span><span class="mi">450</span><span class="s2">         except (SocketTimeout, BaseSSLError, SocketError) as e:</span>
 <span class="g g-Whitespace">    </span><span class="mi">451</span><span class="s2">             self._raise_timeout(err=e, url=url, timeout_value=read_timeout)</span>
 
-<span class="nn">/usr/local/lib/python3.9/dist-packages/urllib3/packages/six.py</span> in <span class="ni">raise_from</span><span class="nt">(value, from_value)</span>
+<span class="nn">/usr/local/lib/python3.10/dist-packages/urllib3/packages/six.py</span> in <span class="ni">raise_from</span><span class="nt">(value, from_value)</span>
 
-<span class="nn">/usr/local/lib/python3.9/dist-packages/urllib3/connectionpool.py</span> in <span class="ni">_make_request</span><span class="nt">(self, conn, method, url, timeout, chunked, **httplib_request_kw)</span>
+<span class="nn">/usr/local/lib/python3.10/dist-packages/urllib3/connectionpool.py</span> in <span class="ni">_make_request</span><span class="nt">(self, conn, method, url, timeout, chunked, **httplib_request_kw)</span>
 <span class="g g-Whitespace">    </span><span class="mi">442</span><span class="s2">                 # Python 3</span>
 <span class="g g-Whitespace">    </span><span class="mi">443</span><span class="s2">                 try:</span>
 <span class="ne">--&gt; </span><span class="mi">444</span><span class="s2">                     httplib_response = conn.getresponse()</span>
 <span class="g g-Whitespace">    </span><span class="mi">445</span><span class="s2">                 except BaseException as e:</span>
 <span class="g g-Whitespace">    </span><span class="mi">446</span><span class="s2">                     # Remove the TypeError from the exception chain in</span>
 
-<span class="nn">/usr/lib/python3.9/http/client.py</span> in <span class="ni">getresponse</span><span class="nt">(self)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1375</span><span class="s2">         try:</span>
-<span class="g g-Whitespace">   </span><span class="mi">1376</span><span class="s2">             try:</span>
-<span class="ne">-&gt; </span><span class="mi">1377</span><span class="s2">                 response.begin()</span>
-<span class="g g-Whitespace">   </span><span class="mi">1378</span><span class="s2">             except ConnectionError:</span>
-<span class="g g-Whitespace">   </span><span class="mi">1379</span><span class="s2">                 self.close()</span>
+<span class="nn">/usr/lib/python3.10/http/client.py</span> in <span class="ni">getresponse</span><span class="nt">(self)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1373</span><span class="s2">         try:</span>
+<span class="g g-Whitespace">   </span><span class="mi">1374</span><span class="s2">             try:</span>
+<span class="ne">-&gt; </span><span class="mi">1375</span><span class="s2">                 response.begin()</span>
+<span class="g g-Whitespace">   </span><span class="mi">1376</span><span class="s2">             except ConnectionError:</span>
+<span class="g g-Whitespace">   </span><span class="mi">1377</span><span class="s2">                 self.close()</span>
 
-<span class="nn">/usr/lib/python3.9/http/client.py</span> in <span class="ni">begin</span><span class="nt">(self)</span>
-<span class="g g-Whitespace">    </span><span class="mi">318</span><span class="s2">         # read until we get a non-100 response</span>
-<span class="g g-Whitespace">    </span><span class="mi">319</span><span class="s2">         while True:</span>
-<span class="ne">--&gt; </span><span class="mi">320</span><span class="s2">             version, status, reason = self._read_status()</span>
-<span class="g g-Whitespace">    </span><span class="mi">321</span><span class="s2">             if status != CONTINUE:</span>
-<span class="g g-Whitespace">    </span><span class="mi">322</span><span class="s2">                 break</span>
+<span class="nn">/usr/lib/python3.10/http/client.py</span> in <span class="ni">begin</span><span class="nt">(self)</span>
+<span class="g g-Whitespace">    </span><span class="mi">316</span><span class="s2">         # read until we get a non-100 response</span>
+<span class="g g-Whitespace">    </span><span class="mi">317</span><span class="s2">         while True:</span>
+<span class="ne">--&gt; </span><span class="mi">318</span><span class="s2">             version, status, reason = self._read_status()</span>
+<span class="g g-Whitespace">    </span><span class="mi">319</span><span class="s2">             if status != CONTINUE:</span>
+<span class="g g-Whitespace">    </span><span class="mi">320</span><span class="s2">                 break</span>
 
-<span class="nn">/usr/lib/python3.9/http/client.py</span> in <span class="ni">_read_status</span><span class="nt">(self)</span>
-<span class="g g-Whitespace">    </span><span class="mi">279</span><span class="s2"> </span>
-<span class="g g-Whitespace">    </span><span class="mi">280</span><span class="s2">     def _read_status(self):</span>
-<span class="ne">--&gt; </span><span class="mi">281</span><span class="s2">         line = str(self.fp.readline(_MAXLINE + 1), &quot;iso-8859-1&quot;)</span>
-<span class="g g-Whitespace">    </span><span class="mi">282</span><span class="s2">         if len(line) &gt; _MAXLINE:</span>
-<span class="g g-Whitespace">    </span><span class="mi">283</span><span class="s2">             raise LineTooLong(&quot;status line&quot;)</span>
+<span class="nn">/usr/lib/python3.10/http/client.py</span> in <span class="ni">_read_status</span><span class="nt">(self)</span>
+<span class="g g-Whitespace">    </span><span class="mi">277</span><span class="s2"> </span>
+<span class="g g-Whitespace">    </span><span class="mi">278</span><span class="s2">     def _read_status(self):</span>
+<span class="ne">--&gt; </span><span class="mi">279</span><span class="s2">         line = str(self.fp.readline(_MAXLINE + 1), &quot;iso-8859-1&quot;)</span>
+<span class="g g-Whitespace">    </span><span class="mi">280</span><span class="s2">         if len(line) &gt; _MAXLINE:</span>
+<span class="g g-Whitespace">    </span><span class="mi">281</span><span class="s2">             raise LineTooLong(&quot;status line&quot;)</span>
 
-<span class="nn">/usr/lib/python3.9/socket.py</span> in <span class="ni">readinto</span><span class="nt">(self, b)</span>
-<span class="g g-Whitespace">    </span><span class="mi">702</span><span class="s2">         while True:</span>
-<span class="g g-Whitespace">    </span><span class="mi">703</span><span class="s2">             try:</span>
-<span class="ne">--&gt; </span><span class="mi">704</span><span class="s2">                 return self._sock.recv_into(b)</span>
-<span class="g g-Whitespace">    </span><span class="mi">705</span><span class="s2">             except timeout:</span>
-<span class="g g-Whitespace">    </span><span class="mi">706</span><span class="s2">                 self._timeout_occurred = True</span>
+<span class="nn">/usr/lib/python3.10/socket.py</span> in <span class="ni">readinto</span><span class="nt">(self, b)</span>
+<span class="g g-Whitespace">    </span><span class="mi">703</span><span class="s2">         while True:</span>
+<span class="g g-Whitespace">    </span><span class="mi">704</span><span class="s2">             try:</span>
+<span class="ne">--&gt; </span><span class="mi">705</span><span class="s2">                 return self._sock.recv_into(b)</span>
+<span class="g g-Whitespace">    </span><span class="mi">706</span><span class="s2">             except timeout:</span>
+<span class="g g-Whitespace">    </span><span class="mi">707</span><span class="s2">                 self._timeout_occurred = True</span>
 
-<span class="nn">/usr/lib/python3.9/ssl.py</span> in <span class="ni">recv_into</span><span class="nt">(self, buffer, nbytes, flags)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1240</span><span class="s2">                   &quot;non-zero flags not allowed in calls to recv_into() on </span><span class="si">%s</span><span class="s2">&quot; %</span>
-<span class="g g-Whitespace">   </span><span class="mi">1241</span><span class="s2">                   self.__class__)</span>
-<span class="ne">-&gt; </span><span class="mi">1242</span><span class="s2">             return self.read(nbytes, buffer)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1243</span><span class="s2">         else:</span>
-<span class="g g-Whitespace">   </span><span class="mi">1244</span><span class="s2">             return super().recv_into(buffer, nbytes, flags)</span>
+<span class="nn">/usr/lib/python3.10/ssl.py</span> in <span class="ni">recv_into</span><span class="nt">(self, buffer, nbytes, flags)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1272</span><span class="s2">                   &quot;non-zero flags not allowed in calls to recv_into() on </span><span class="si">%s</span><span class="s2">&quot; %</span>
+<span class="g g-Whitespace">   </span><span class="mi">1273</span><span class="s2">                   self.__class__)</span>
+<span class="ne">-&gt; </span><span class="mi">1274</span><span class="s2">             return self.read(nbytes, buffer)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1275</span><span class="s2">         else:</span>
+<span class="g g-Whitespace">   </span><span class="mi">1276</span><span class="s2">             return super().recv_into(buffer, nbytes, flags)</span>
 
-<span class="nn">/usr/lib/python3.9/ssl.py</span> in <span class="ni">read</span><span class="nt">(self, len, buffer)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1098</span><span class="s2">         try:</span>
-<span class="g g-Whitespace">   </span><span class="mi">1099</span><span class="s2">             if buffer is not None:</span>
-<span class="ne">-&gt; </span><span class="mi">1100</span><span class="s2">                 return self._sslobj.read(len, buffer)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1101</span><span class="s2">             else:</span>
-<span class="g g-Whitespace">   </span><span class="mi">1102</span><span class="s2">                 return self._sslobj.read(len)</span>
+<span class="nn">/usr/lib/python3.10/ssl.py</span> in <span class="ni">read</span><span class="nt">(self, len, buffer)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1128</span><span class="s2">         try:</span>
+<span class="g g-Whitespace">   </span><span class="mi">1129</span><span class="s2">             if buffer is not None:</span>
+<span class="ne">-&gt; </span><span class="mi">1130</span><span class="s2">                 return self._sslobj.read(len, buffer)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1131</span><span class="s2">             else:</span>
+<span class="g g-Whitespace">   </span><span class="mi">1132</span><span class="s2">                 return self._sslobj.read(len)</span>
 
 <span class="ne">KeyboardInterrupt</span>: 
 </pre></div>
@@ -1364,8 +1368,9 @@ Requirement already satisfied: soupsieve&gt;1.2 in /usr/local/lib/python3.9/dist
   </div>
   </div></div>
 </div>
-<div class="section" id="steaming">
-<h3><strong>5. Steaming</strong><a class="headerlink" href="#steaming" title="Permalink to this heading">#</a></h3>
+<div class="section" id="stemming">
+<h3><strong>5. Stemming</strong><a class="headerlink" href="#stemming" title="Permalink to this heading">#</a></h3>
+<p>Stemming merupakan proses mengubah sebuah kata menjadi kata dasar</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#install modul sastrawi</span>
@@ -1563,6 +1568,10 @@ Successfully installed Sastrawi-1.0.1
 </div>
 <div class="section" id="tokenizing-dan-stop-word">
 <h3><strong>6. Tokenizing dan Stop Word</strong><a class="headerlink" href="#tokenizing-dan-stop-word" title="Permalink to this heading">#</a></h3>
+<ul class="simple">
+<li><p>Tokenizing merupakan proses mengubah kalimat menjadi kata-kata</p></li>
+<li><p>Stop Word merupakan proses mengeliminasi kata-kata yang dianggap tidak penting seperti “yang”, “dan”, “atau”, dsb</p></li>
+</ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">nltk</span>
@@ -1754,6 +1763,16 @@ Successfully installed Sastrawi-1.0.1
 </div>
 <div class="section" id="ekstraksi-fitur-perhitungan-tf-idf">
 <h2><strong>EKSTRAKSI FITUR - PERHITUNGAN TF IDF</strong><a class="headerlink" href="#ekstraksi-fitur-perhitungan-tf-idf" title="Permalink to this heading">#</a></h2>
+<ul>
+<li><p>TF (<em>Term Frequency</em>)</p>
+<p>Term Frequency merupakan pembobotan/weight setiap kata (term) pada suatu dokumen berdasarkan jumlah kemunculannya dalam dokumen tersebut. Semakin besar jumlah kemunculan suatu kata dalam dokumen, maka semakin besar pula bobot yang diberikan (TF Tinggi) jadi nilai tertinggi merupakan  jumlah kemunculan/frekuensi. Biasanya term / kata-kata yang sering muncul merupakan topik yang ingin kita cari, namun demikian kata-kata yang sering muncul malah menjadi menjadi kata umum oleh karena hal tersebut dibutuhkan invers document frequency.</p>
+</li>
+<li><p>IDF (<em>Inverse Document Frequency</em>)
+Inverse Document Frequency (IDF) bertujuan untuk mengetahui apakah term yang dicari cocok dengan kata kunci yang diinginkan, term yang sering muncul akan memberikan pengaruh yang kecil dalam menentukan keterkaitan kata kunci dokumen.</p></li>
+<li><p>TF - IDF
+Pembobotan TF-IDF adalah hasil perkalian dari pembobotan term frequency dan inverse document frequency dari suatu term. TF-IDF dihitung dengan menggunakan persamaan seperti berikut
+<img alt="image.png" src="data:image/png;base64,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" /></p></li>
+</ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># TfidfVectorizer </span>
@@ -1786,6 +1805,8 @@ Successfully installed Sastrawi-1.0.1
 </div>
 </div>
 </div>
+<div class="section" id="menampilkan-tf">
+<h3><strong>1. Menampilkan TF</strong><a class="headerlink" href="#menampilkan-tf" title="Permalink to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_countvect</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">data</span> <span class="o">=</span> <span class="n">count_wm</span><span class="o">.</span><span class="n">toarray</span><span class="p">(),</span><span class="n">columns</span> <span class="o">=</span> <span class="n">count_tokens</span><span class="p">)</span>
@@ -2191,6 +2212,9 @@ Successfully installed Sastrawi-1.0.1
 </div>
 </div>
 </div>
+</div>
+<div class="section" id="menampilkan-tf-idf">
+<h3><strong>2. Menampilkan TF-IDF</strong><a class="headerlink" href="#menampilkan-tf-idf" title="Permalink to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_tfidfvect</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">data</span> <span class="o">=</span> <span class="n">tfidf_wm</span><span class="o">.</span><span class="n">toarray</span><span class="p">(),</span><span class="n">columns</span> <span class="o">=</span> <span class="n">tfidf_tokens</span><span class="p">)</span>
@@ -2592,6 +2616,7 @@ Successfully installed Sastrawi-1.0.1
     </div>
   </div>
   </div></div>
+</div>
 </div>
 </div>
 <div class="section" id="reduksi-dimensi-dengan-metode-pca">
@@ -3287,11 +3312,15 @@ Successfully installed Sastrawi-1.0.1
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#slank-words"><strong>4. Slank Words</strong></a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#steaming"><strong>5. Steaming</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#stemming"><strong>5. Stemming</strong></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#tokenizing-dan-stop-word"><strong>6. Tokenizing dan Stop Word</strong></a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ekstraksi-fitur-perhitungan-tf-idf"><strong>EKSTRAKSI FITUR - PERHITUNGAN TF IDF</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ekstraksi-fitur-perhitungan-tf-idf"><strong>EKSTRAKSI FITUR - PERHITUNGAN TF IDF</strong></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#menampilkan-tf"><strong>1. Menampilkan TF</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#menampilkan-tf-idf"><strong>2. Menampilkan TF-IDF</strong></a></li>
+</ul>
+</li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#reduksi-dimensi-dengan-metode-pca"><strong>REDUKSI DIMENSI DENGAN METODE PCA</strong></a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#modelling-dengan-k-means-clustering"><strong>MODELLING DENGAN K-MEANS CLUSTERING</strong></a></li>
 </ul>

@@ -436,25 +436,22 @@ document.write(`
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  Preparing metadata (pyproject.toml) ... ?25l?25hdone
 Collecting chardet&lt;4.0,&gt;=2.0
   Using cached chardet-3.0.4-py2.py3-none-any.whl (133 kB)
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Collecting async-timeout&lt;4.0,&gt;=3.0
-  Using cached async_timeout-3.0.1-py3-none-any.whl (8.2 kB)
+Requirement already satisfied: attrs&gt;=17.3.0 in /usr/local/lib/python3.10/dist-packages (from aiohttp==3.7.0) (23.1.0)
 </pre></div>
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Collecting yarl&lt;2.0,&gt;=1.0
   Using cached yarl-1.9.2-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (268 kB)
+Collecting async-timeout&lt;4.0,&gt;=3.0
+  Using cached async_timeout-3.0.1-py3-none-any.whl (8.2 kB)
 </pre></div>
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Collecting multidict&lt;7.0,&gt;=4.5
   Using cached multidict-6.0.4-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (114 kB)
-Requirement already satisfied: attrs&gt;=17.3.0 in /usr/local/lib/python3.10/dist-packages (from aiohttp==3.7.0) (23.1.0)
 Requirement already satisfied: idna&gt;=2.0 in /usr/local/lib/python3.10/dist-packages (from yarl&lt;2.0,&gt;=1.0-&gt;aiohttp==3.7.0) (3.4)
 Building wheels for collected packages: aiohttp
 </pre></div>
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  Building wheel for aiohttp (pyproject.toml) ... ?25l?25hcanceled
-<span class=" -Color -Color-Red">ERROR: Operation cancelled by user</span>
 Traceback (most recent call last):
   File &quot;/usr/local/lib/python3.10/dist-packages/pip/_internal/cli/base_command.py&quot;, line 160, in exc_logging_wrapper
     status = run_func(*args)
@@ -480,8 +477,6 @@ Traceback (most recent call last):
     call_subprocess(
   File &quot;/usr/local/lib/python3.10/dist-packages/pip/_internal/utils/subprocess.py&quot;, line 166, in call_subprocess
     line: str = proc.stdout.readline()
-  File &quot;/usr/lib/python3.10/codecs.py&quot;, line 319, in decode
-    def decode(self, input, final=False):
 KeyboardInterrupt
 
 During handling of the above exception, another exception occurred:
@@ -507,16 +502,12 @@ Traceback (most recent call last):
     hdlr.handle(record)
   File &quot;/usr/lib/python3.10/logging/__init__.py&quot;, line 968, in handle
     self.emit(record)
-  File &quot;/usr/local/lib/python3.10/dist-packages/pip/_internal/utils/logging.py&quot;, line 177, in emit
-    self.console.print(renderable, overflow=&quot;ignore&quot;, crop=False, style=style)
-  File &quot;/usr/local/lib/python3.10/dist-packages/pip/_vendor/rich/console.py&quot;, line 1667, in print
-    with self:
-  File &quot;/usr/local/lib/python3.10/dist-packages/pip/_vendor/rich/console.py&quot;, line 869, in __exit__
-    self._exit_buffer()
-  File &quot;/usr/local/lib/python3.10/dist-packages/pip/_vendor/rich/console.py&quot;, line 827, in _exit_buffer
-    self._check_buffer()
-  File &quot;/usr/local/lib/python3.10/dist-packages/pip/_vendor/rich/console.py&quot;, line 2039, in _check_buffer
-    self.file.write(text)
+  File &quot;/usr/local/lib/python3.10/dist-packages/pip/_internal/utils/logging.py&quot;, line 169, in emit
+    renderable = self.render_message(record, message)
+  File &quot;/usr/local/lib/python3.10/dist-packages/pip/_vendor/rich/logging.py&quot;, line 185, in render_message
+    message_text = Text.from_markup(message) if use_markup else Text(message)
+  File &quot;/usr/local/lib/python3.10/dist-packages/pip/_vendor/rich/text.py&quot;, line 131, in __init__
+    def __init__(
 KeyboardInterrupt
 </pre></div>
 </div>

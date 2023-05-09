@@ -160,6 +160,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="Craw_Berita.html"><strong>CRAWLING DATA BERITA ONLINE DETIK.COM</strong></a></li>
 <li class="toctree-l1"><a class="reference internal" href="UTS_PSD.html"><strong>UTS PROYEK SAINS DATA</strong></a></li>
 <li class="toctree-l1"><a class="reference internal" href="Tugas%20Pagerank.html"><strong>PAGERANK</strong></a></li>
+<li class="toctree-l1"><a class="reference internal" href="SVD.html">TOPIC MODELLING DENGAN SVD</a></li>
 </ul>
 
     </div>
@@ -428,90 +429,31 @@ document.write(`
 </pre></div>
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  Installing build dependencies ... ?25l?25hdone
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  Getting requirements to build wheel ... ?25l?25hdone
+  Getting requirements to build wheel ... ?25l?25hdone
 </pre></div>
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  Preparing metadata (pyproject.toml) ... ?25l?25hdone
 Collecting chardet&lt;4.0,&gt;=2.0
   Using cached chardet-3.0.4-py2.py3-none-any.whl (133 kB)
-Requirement already satisfied: attrs&gt;=17.3.0 in /usr/local/lib/python3.10/dist-packages (from aiohttp==3.7.0) (23.1.0)
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Collecting yarl&lt;2.0,&gt;=1.0
-  Using cached yarl-1.9.2-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (268 kB)
-Collecting async-timeout&lt;4.0,&gt;=3.0
-  Using cached async_timeout-3.0.1-py3-none-any.whl (8.2 kB)
 </pre></div>
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Collecting multidict&lt;7.0,&gt;=4.5
   Using cached multidict-6.0.4-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (114 kB)
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Collecting async-timeout&lt;4.0,&gt;=3.0
+  Using cached async_timeout-3.0.1-py3-none-any.whl (8.2 kB)
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Collecting yarl&lt;2.0,&gt;=1.0
+  Using cached yarl-1.9.2-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (268 kB)
+Requirement already satisfied: attrs&gt;=17.3.0 in /usr/local/lib/python3.10/dist-packages (from aiohttp==3.7.0) (23.1.0)
 Requirement already satisfied: idna&gt;=2.0 in /usr/local/lib/python3.10/dist-packages (from yarl&lt;2.0,&gt;=1.0-&gt;aiohttp==3.7.0) (3.4)
 Building wheels for collected packages: aiohttp
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  Building wheel for aiohttp (pyproject.toml) ... ?25l?25hcanceled
-Traceback (most recent call last):
-  File &quot;/usr/local/lib/python3.10/dist-packages/pip/_internal/cli/base_command.py&quot;, line 160, in exc_logging_wrapper
-    status = run_func(*args)
-  File &quot;/usr/local/lib/python3.10/dist-packages/pip/_internal/cli/req_command.py&quot;, line 241, in wrapper
-    return func(self, options, args)
-  File &quot;/usr/local/lib/python3.10/dist-packages/pip/_internal/commands/install.py&quot;, line 463, in run
-    _, build_failures = build(
-  File &quot;/usr/local/lib/python3.10/dist-packages/pip/_internal/wheel_builder.py&quot;, line 347, in build
-    wheel_file = _build_one(
-  File &quot;/usr/local/lib/python3.10/dist-packages/pip/_internal/wheel_builder.py&quot;, line 221, in _build_one
-    wheel_path = _build_one_inside_env(
-  File &quot;/usr/local/lib/python3.10/dist-packages/pip/_internal/wheel_builder.py&quot;, line 261, in _build_one_inside_env
-    wheel_path = build_wheel_pep517(
-  File &quot;/usr/local/lib/python3.10/dist-packages/pip/_internal/operations/build/wheel.py&quot;, line 30, in build_wheel_pep517
-    wheel_name = backend.build_wheel(
-  File &quot;/usr/local/lib/python3.10/dist-packages/pip/_internal/utils/misc.py&quot;, line 676, in build_wheel
-    return super().build_wheel(
-  File &quot;/usr/local/lib/python3.10/dist-packages/pip/_vendor/pyproject_hooks/_impl.py&quot;, line 209, in build_wheel
-    return self._call_hook(&#39;build_wheel&#39;, {
-  File &quot;/usr/local/lib/python3.10/dist-packages/pip/_vendor/pyproject_hooks/_impl.py&quot;, line 311, in _call_hook
-    self._subprocess_runner(
-  File &quot;/usr/local/lib/python3.10/dist-packages/pip/_internal/utils/subprocess.py&quot;, line 252, in runner
-    call_subprocess(
-  File &quot;/usr/local/lib/python3.10/dist-packages/pip/_internal/utils/subprocess.py&quot;, line 166, in call_subprocess
-    line: str = proc.stdout.readline()
-KeyboardInterrupt
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  Building wheel for aiohttp (pyproject.toml) ... ?25l?25hcanceled<span class=" -Color -Color-Red">ERROR: Operation cancelled by user</span>
 
-During handling of the above exception, another exception occurred:
-
-Traceback (most recent call last):
-  File &quot;/usr/local/bin/pip3&quot;, line 8, in &lt;module&gt;
-    sys.exit(main())
-  File &quot;/usr/local/lib/python3.10/dist-packages/pip/_internal/cli/main.py&quot;, line 70, in main
-    return command.main(cmd_args)
-  File &quot;/usr/local/lib/python3.10/dist-packages/pip/_internal/cli/base_command.py&quot;, line 101, in main
-    return self._main(args)
-  File &quot;/usr/local/lib/python3.10/dist-packages/pip/_internal/cli/base_command.py&quot;, line 214, in _main
-    return run(options, args)
-  File &quot;/usr/local/lib/python3.10/dist-packages/pip/_internal/cli/base_command.py&quot;, line 197, in exc_logging_wrapper
-    logger.critical(&quot;Operation cancelled by user&quot;)
-  File &quot;/usr/lib/python3.10/logging/__init__.py&quot;, line 1524, in critical
-    self._log(CRITICAL, msg, args, **kwargs)
-  File &quot;/usr/lib/python3.10/logging/__init__.py&quot;, line 1624, in _log
-    self.handle(record)
-  File &quot;/usr/lib/python3.10/logging/__init__.py&quot;, line 1634, in handle
-    self.callHandlers(record)
-  File &quot;/usr/lib/python3.10/logging/__init__.py&quot;, line 1696, in callHandlers
-    hdlr.handle(record)
-  File &quot;/usr/lib/python3.10/logging/__init__.py&quot;, line 968, in handle
-    self.emit(record)
-  File &quot;/usr/local/lib/python3.10/dist-packages/pip/_internal/utils/logging.py&quot;, line 169, in emit
-    renderable = self.render_message(record, message)
-  File &quot;/usr/local/lib/python3.10/dist-packages/pip/_vendor/rich/logging.py&quot;, line 185, in render_message
-    message_text = Text.from_markup(message) if use_markup else Text(message)
-  File &quot;/usr/local/lib/python3.10/dist-packages/pip/_vendor/rich/text.py&quot;, line 131, in __init__
-    def __init__(
-KeyboardInterrupt
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>^C
 </pre></div>
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Looking in indexes: https://pypi.org/simple, https://us-python.pkg.dev/colab-wheels/public/simple/

@@ -32,8 +32,5 @@ Here is a preview of the cell contents:
 -------------------
 from google.colab import drive
 drive.mount('/content/drive')
-path = '/content/drive/My Drive/prosaindata/capres_2024_new.csv'
-with open(path, 'w', encoding = 'utf-8-sig') as f:
-  df.to_csv(f)
 -------------------
 
